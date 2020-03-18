@@ -11,7 +11,7 @@ $ npm i eslint --save-dev
 Next, install `eslint-plugin-lodash-to-native`:
 
 ```
-$ npm install -S https://github.com/namtyda/eslint-plugin-lodash-to-native.git
+$ npm install -S https://github.com/georgiylityagin/eslint-plugin-lodash-to-native.git
 
 ```
 
