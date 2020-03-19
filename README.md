@@ -1,23 +1,19 @@
 # eslint-plugin-lodash-to-native
 
-## Installation
-
-You'll first need to install [ESLint](http://eslint.org):
+## Установка
 
 ```
 $ npm i eslint --save-dev
 ```
-
-Next, install `eslint-plugin-lodash-to-native`:
 
 ```
 $ npm install -S https://github.com/georgiylityagin/eslint-plugin-lodash-to-native.git
 
 ```
 
-## Usage
+## Использование
 
-Add `lodash-to-native` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Надо добавить `lodash-to-native` в секцию плагинов в конфигурационном файле `.eslintrc`.
 
 ```json
     "plugins": [
@@ -26,8 +22,7 @@ Add `lodash-to-native` to the plugins section of your `.eslintrc` configuration 
 
 ```
 
-
-Then configure the rules you want to use under the rules section.
+Потом надо добавить правило
 
 ```json
      "rules": {
@@ -35,7 +30,7 @@ Then configure the rules you want to use under the rules section.
   },
 ```
 
-## Tests
+## Тесты
 
 ```
 npm run test
