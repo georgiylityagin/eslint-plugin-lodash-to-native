@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/map"),
+var rule = require("../../../lib/rules/map.js"),
 
   RuleTester = require("eslint").RuleTester;
 
@@ -18,33 +18,50 @@ var rule = require("../../../lib/rules/map"),
 //------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-let errorObject = {
-  message: 'This is construction _.map can be replaced by Array.map',
-  type: 'MemberExpression',
+
+const error = {
+  message: "Use native array map method",
+  type: "MemberExpression",
 };
 
-ruleTester.run("map", rule, {
+ruleTester.run('lodash-to-native', rule, {
 
   valid: [
     {
       code: '[1, 2, 3].map(fn)'
     },
     {
-      code: '_.map({a: 1, b: 2, c: 3}, fn)'
+      code: 'arr.map(fn)'
     },
     {
-      code: 'Array.isArray(arr) ? arr.map(fn) : _.map(arr, fn);'
+      code: '_.map({a: 1, b: 2, c: 3}, fn)'
     }
   ],
 
   invalid: [
     {
-      code: '_.map(arr, fn)',
-      errors: [errorObject],
+      code: `
+        var _ = require('lodash');
+        var arr = [1,2,3,4,5];
+        var t1 = _.map(arr, fn)
+
+      `,
+      errors: [error]
     },
     {
-      code: '_.map(bar, fn)',
-      errors: [errorObject]
-    }
+      code: `
+        var t1 = _.map([1, 2, 3], fn)
+
+      `,
+      errors: [error]
+    },
+    {
+      code: `
+        var obj = {a: 1, b: 2};
+        var t1 = _.map(obj, fn)
+
+      `,
+      errors: [error]
+    },
   ]
 });
